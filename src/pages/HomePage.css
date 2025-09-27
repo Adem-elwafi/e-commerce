@@ -1,16 +1,17 @@
-.HomePage {
+.landing {
     background-image: url('/src/assets/background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+
     min-height: 100vh;
     width: 100%;
     position: relative;
+
 }
 
 /* Add a blurred overlay for better text readability */
-.HomePage::before {
+.landing::before {
     content: '';
     position: absolute;
     top: 0;
@@ -23,8 +24,19 @@
 }
 
 /* Ensure content stays above the overlay */
-.HomePage > * {
+.landing > * {
     position: relative;
     z-index: 1;
 }
 
+/* In your CSS file */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-custom::-webkit-scrollbar {
+    height: 8px;
+  }
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }

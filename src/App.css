@@ -1,1 +1,24 @@
 @import "./pages/HomePage.css";
+
+/* Custom scrollbar for horizontal container */
+.scrollbar-x::-webkit-scrollbar {
+  height: 10px;
+}
+.scrollbar-x::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-x::-webkit-scrollbar-thumb {
+  background: #253900;
+  border-radius: 999px;
+  border: 2px solid transparent;
+}
+.scrollbar-x {
+  scrollbar-color: #253900 transparent;
+  scrollbar-width: thin;
+}
+
+/* Focus ring for interactive items */
+.focus-outline:focus {
+  outline: 3px solid rgba(37,57,0,0.18);
+  outline-offset: 2px;
+}

@@ -120,13 +120,13 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
   }, [onAddToWishlist]);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-12">
+    <section className=" max-w-7xl mx-auto px-4 py-12">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-semibold border-b-2 border-gray-200 pb-1">
+        <h2 className="text-3xl font-semibold border-b-2 border-[#08CB00] pb-1">
           Best Sellers
         </h2>
-        <a href="/shop" className="text-sm text-blue-600 hover:underline">
+        <a href="/shop" className="text-sm text-[#08CB00] hover:underline">
           View All
         </a>
       </div>
@@ -136,7 +136,7 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
         <button
           aria-label="Previous"
           onClick={handlePrev}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-[#EEEEEE] p-2 rounded-full shadow hover:bg-[#08CB00] hover:text-white z-10 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           disabled={currentIndex === 0}
         >
           {/* Left Arrow */}
@@ -154,7 +154,7 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
           {products.map((p, idx) => (
             <div
               key={p.id}
-              className="group relative min-w-[250px] sm:min-w-[280px] bg-white rounded-lg shadow-sm hover:shadow-lg transition p-4 snap-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="group relative min-w-[250px] sm:min-w-[280px] bg-[#EEEEEE] rounded-lg shadow-sm hover:shadow-lg transition p-4 snap-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#08CB00]"
               role="button"
               tabIndex={0}
               onClick={() => openModal(p)}
@@ -163,19 +163,19 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
             >
               {/* Sale/Bestseller Badge */}
               {p.onSale && (
-                <span className="absolute top-2 left-2 bg-red-500 text-white text-xs uppercase px-2 py-1 rounded">
+                <span className="absolute top-2 left-2 bg-[#08CB00] text-white text-xs uppercase px-2 py-1 rounded">
                   Sale
                 </span>
               )}
               {p.bestseller && !p.onSale && (
-                <span className="absolute top-2 left-2 bg-yellow-400 text-white text-xs uppercase px-2 py-1 rounded">
+                <span className="absolute top-2 left-2 bg-[#253900] text-white text-xs uppercase px-2 py-1 rounded">
                   Bestseller
                 </span>
               )}
 
               {/* Wishlist Icon */}
               <button 
-                className="absolute top-2 right-2 text-gray-300 hover:text-red-500 transition focus:outline-none focus:ring-2 focus:ring-red-500 rounded-full p-1"
+                className="absolute top-2 right-2 text-[#000000] hover:text-[#08CB00] transition focus:outline-none focus:ring-2 focus:ring-[#08CB00] rounded-full p-1"
                 onClick={(e) => handleAddToWishlist(p.id, e)}
                 aria-label={`Add ${p.title} to wishlist`}
               >
@@ -195,10 +195,10 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
               </div>
 
               {/* Title & Price */}
-              <h3 className="mt-4 text-lg font-medium text-gray-900 line-clamp-2 h-14">{p.title}</h3>
-              <div className="mt-1 flex items-center space-x-2 text-gray-600">
-                {p.onSale && <span className="line-through">${p.price}</span>}
-                <span className="text-xl font-semibold text-black">
+              <h3 className="mt-4 text-lg font-medium text-[#000000] line-clamp-2 h-14">{p.title}</h3>
+              <div className="mt-1 flex items-center space-x-2 text-[#000000]">
+                {p.onSale && <span className="line-through text-gray-600">${p.price}</span>}
+                <span className="text-xl font-semibold text-[#08CB00]">
                   ${p.onSale ? p.salePrice : p.price}
                 </span>
               </div>
@@ -221,14 +221,14 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
               <div className="mt-4 flex space-x-2">
                 <button
                   onClick={(e) => handleAddToCart(p, e)}
-                  className="flex-1 bg-blue-600 text-white py-2 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transform hover:-translate-y-0.5 transition"
+                  className="flex-1 bg-[#253900] text-white py-2 rounded hover:bg-[#08CB00] focus:outline-none focus:ring-2 focus:ring-[#08CB00] focus:ring-offset-2 transform hover:-translate-y-0.5 transition"
                   aria-label={`Add ${p.title} to cart`}
                 >
                   Add to Cart
                 </button>
                 <button
                   onClick={() => openModal(p)}
-                  className="bg-gray-100 text-gray-700 py-2 px-3 rounded hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition"
+                  className="bg-[#EEEEEE] text-[#000000] py-2 px-3 rounded hover:bg-[#08CB00] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#08CB00] focus:ring-offset-2 transition"
                   aria-label={`Quick view ${p.title}`}
                 >
                   Quick View
@@ -241,7 +241,7 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
         <button
           aria-label="Next"
           onClick={handleNext}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100 z-10"
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-[#EEEEEE] p-2 rounded-full shadow hover:bg-[#08CB00] hover:text-white z-10 transition-colors"
         >
           {/* Right Arrow */}
           <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -256,7 +256,7 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
           <button
             key={i}
             onClick={() => setCurrentIndex(i)}
-            className={`w-2 h-2 rounded-full ${i === currentIndex ? 'bg-blue-600' : 'bg-gray-300'}`}
+            className={`w-3 h-3 rounded-full ${i === currentIndex ? 'bg-[#08CB00]' : 'bg-[#000000]'}`}
             aria-label={`Go to page ${i + 1}`}
           />
         ))}
@@ -273,10 +273,10 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
         {modalProduct && (
           <div 
             ref={modalRef}
-            className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative transform transition-all"
+            className="bg-[#EEEEEE] rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto relative transform transition-all"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="sticky top-0 bg-white p-4 border-b flex justify-between items-center">
+            <div className="sticky top-0 bg-[#EEEEEE] p-4 border-b border-[#000000] flex justify-between items-center">
               <h2 id="modal-title" className="text-2xl font-semibold">
                 {modalProduct.title}
               </h2>
@@ -340,7 +340,7 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
                       handleAddToCart(modalProduct, e);
                       closeModal();
                     }}
-                    className="flex-1 bg-blue-600 text-white py-3 px-6 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
+                    className="flex-1 bg-[#253900] text-white py-3 px-6 rounded hover:bg-[#08CB00] focus:outline-none focus:ring-2 focus:ring-[#08CB00] focus:ring-offset-2 transition"
                   >
                     Add to Cart
                   </button>
@@ -348,7 +348,7 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
                     onClick={(e) => {
                       handleAddToWishlist(modalProduct.id, e);
                     }}
-                    className="p-3 text-gray-700 hover:text-red-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 rounded-full transition"
+                    className="p-3 text-[#000000] hover:text-[#08CB00] focus:outline-none focus:ring-2 focus:ring-[#08CB00] focus:ring-offset-2 rounded-full transition"
                     aria-label="Add to wishlist"
                   >
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
