@@ -1,8 +1,11 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import { FiStar, FiShoppingCart, FiHeart, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../features/cart/cartSlice';
+import { addToWishlist } from '../features/wishlist/wishlistSlice';
 import products from '../data/products';
 
-const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
+const Bestsellers = () => {
   const carouselRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(4);
@@ -101,23 +104,28 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
     }
   }, []);
   
+  const dispatch = useDispatch();
+
   const handleAddToCart = useCallback((product, e) => {
     e?.stopPropagation();
-    if (typeof onAddToCart === 'function') {
-      onAddToCart(product);
-    } else {
-      console.log('Added to cart:', product.id);
-    }
-  }, [onAddToCart]);
+    dispatch(addItemToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0],
+      quantity: 1
+    }));
+  }, [dispatch]);
   
-  const handleAddToWishlist = useCallback((productId, e) => {
+  const handleAddToWishlist = useCallback((product, e) => {
     e?.stopPropagation();
-    if (typeof onAddToWishlist === 'function') {
-      onAddToWishlist(productId);
-    } else {
-      console.log('Added to wishlist:', productId);
-    }
-  }, [onAddToWishlist]);
+    dispatch(addToWishlist({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.images[0]
+    }));
+  }, [dispatch]);
 
   return (
     <section className=" max-w-7xl mx-auto px-4 py-12">
@@ -364,15 +372,5 @@ const Bestsellers = ({ onAddToCart, onAddToWishlist }) => {
     </section>
   );
 }
-
-Bestsellers.propTypes = {
-  onAddToCart: PropTypes.func,
-  onAddToWishlist: PropTypes.func,
-};
-
-Bestsellers.defaultProps = {
-  onAddToCart: null,
-  onAddToWishlist: null,
-};
 
 export default Bestsellers;

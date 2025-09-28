@@ -1,69 +1,111 @@
+import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import GiftIdeas from '../components/GiftIdeas';
 import Bestsellers from '../components/BestSellers';
+import Features from '../components/Features';
+import Categories from '../components/Categories';
+import Newsletter from '../components/Newsletter';
 
 const HomePage = () => {
-  return (
-    <div className="HomePage min-h-screen">
-      {/* Hero Section */}
-      <div className="landing px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-white ring-1 ring-white/20 hover:ring-white/50">
-              Announcing our next generation of products.{''}
-              <a href="#" className="font-semibold text-white">
-                <span className="absolute inset-0" aria-hidden="true"></span>Read more <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </div>
-          
-          <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              Shop the latest tech products
-            </h1>
-            <p className="mt-6 text-lg leading-8 text-white/90">
-              Discover amazing deals on the latest technology. We offer the best prices on smartphones, laptops, and accessories with fast shipping and excellent customer service.
-            </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a className="flex items-center justify-center">
-                <div className="relative group">
-                  <button
-                    className="relative inline-block p-px font-semibold leading-6 text-white bg-neutral-900 shadow-2xl cursor-pointer rounded-2xl shadow-emerald-900 transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 hover:shadow-emerald-600"
-                  >
-                    <span
-                      className="absolute inset-0 rounded-2xl bg-gradient-to-r from-emerald-500 via-cyan-500 to-sky-600 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                    ></span>
-                    <span className="relative z-10 block px-6 py-3 rounded-2xl bg-gradient-to-r from-green-900 to-green-1000">
-                      <div className="relative z-10 flex items-center space-x-3">
-                        <span className="transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300">
-                          Shop now
-                        </span>
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                          className="w-7 h-7 transition-all duration-500 group-hover:translate-x-1.5 group-hover:text-emerald-300"
-                        >
-                          <path d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"></path>
-                        </svg>
-                      </div>
-                    </span>
-                  </button>
-                </div>
-              </a>
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-              <a href="#" className="text-sm font-semibold leading-6 text-white">
-                Learn more <span aria-hidden="true">→</span>
-              </a>
+  return (
+    <div className="min-h-screen bg-gray-900 relative">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800">
+        <div className="absolute inset-0 z-0 bg-blur">
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80')] bg-cover bg-center opacity-30"></div>
+        </div>
+        
+        <div className="relative z-10 px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl py-24 sm:py-32 lg:py-40">
+            <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+              <div className="relative rounded-full px-4 py-1 text-sm leading-6 text-white ring-1 ring-white/20 hover:ring-white/50 transition-all duration-300">
+                Introducing our latest tech collection.{' '}
+                <Link to="/new-arrivals" className="font-semibold text-white">
+                  <span className="absolute inset-0" aria-hidden="true"></span>Explore now <span aria-hidden="true">→</span>
+                </Link>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl drop-shadow-md">
+                Premium Tech for the Modern World
+              </h1>
+              <p className="mt-6 text-lg leading-8 text-white/90 max-w-2xl mx-auto">
+                Discover cutting-edge technology and high-performance gear. From gaming rigs to productivity tools, we have everything you need to stay ahead in the digital age.
+              </p>
+              <div className="mt-10 flex items-center justify-center gap-x-6">
+                <a
+                  class="relative cursor-pointer py-4 px-8 text-center font-barlow inline-flex justify-center text-base uppercase text-white rounded-lg border-solid transition-transform duration-300 ease-in-out group outline-offset-4 focus:outline focus:outline-2 focus:outline-white focus:outline-offset-4 overflow-hidden"
+                >
+                  <span class="relative z-20">Button</span>
+
+                  <span
+                    class="absolute left-[-75%] top-0 h-full w-[50%] bg-white/20 rotate-12 z-10 blur-lg group-hover:left-[125%] transition-all duration-1000 ease-in-out"
+                  ></span>
+
+                  <span
+                    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-tl-lg border-l-2 border-t-2 top-0 left-0"
+                  ></span>
+                  <span
+                    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute group-hover:h-[90%] h-[60%] rounded-tr-lg border-r-2 border-t-2 top-0 right-0"
+                  ></span>
+                  <span
+                    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[60%] group-hover:h-[90%] rounded-bl-lg border-l-2 border-b-2 left-0 bottom-0"
+                  ></span>
+                  <span
+                    class="w-1/2 drop-shadow-3xl transition-all duration-300 block border-[#D4EDF9] absolute h-[20%] rounded-br-lg border-r-2 border-b-2 right-0 bottom-0"
+                  ></span>
+                </a>
+
+                <Link to="/categories" className="text-sm font-semibold leading-6 text-white hover:text-gray-200">
+                  Browse categories <span aria-hidden="true">→</span>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12 space-y-12">
-        <Bestsellers />
-        <GiftIdeas />
-      </div>
+
+      <main className="bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+          {/* Categories Section */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Shop by Category</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Find the perfect tech for your needs
+            </p>
+            <Categories />
+          </div>
+          
+          {/* Bestsellers Section */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-bold text-center mb-8">Best Sellers</h2>
+            <Bestsellers />
+          </div>
+          
+          {/* Features Section */}
+          <div className="mt-16 bg-gray-50 rounded-2xl p-8">
+            <h2 className="text-3xl font-bold text-center mb-8">Why Choose Us</h2>
+            <Features />
+          </div>
+          
+          {/* Gift Ideas Section */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-bold text-center mb-8">Gift Ideas</h2>
+            <GiftIdeas />
+          </div>
+          
+          {/* Newsletter Section */}
+          <div className="mt-16">
+            <Newsletter />
+          </div>
+        </div>
+      </main>
     </div>
   );
 };

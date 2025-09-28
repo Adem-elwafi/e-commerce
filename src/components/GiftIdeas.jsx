@@ -1,72 +1,127 @@
-// src/components/GiftIdeas.jsx
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { FiShoppingCart } from 'react-icons/fi';
 
-const sampleProducts = [
-  { id: 1, name: 'Classic Ceramic Mug', price: 12.99 },
-  { id: 2, name: 'Minimalist Notebook', price: 9.5 },
-  { id: 3, name: 'Eco Tote Bag', price: 14.0 },
-  { id: 4, name: 'Compact Power Bank', price: 24.99 }
-];
+const GiftIdeas = ({ products = [], cartItems = [], toggleCart = () => {} }) => {
+  // Safely get gift ideas or first 4 products
+  const getSafeProducts = () => {
+    try {
+      if (!Array.isArray(products) || products.length === 0) return [];
+      
+      const validProducts = products.filter(product => 
+        product && 
+        typeof product === 'object' && 
+        product.id && 
+        product.title
+      );
+      
+      if (validProducts.length === 0) return [];
+      
+      const giftIdeas = validProducts.filter(p => p.giftIdea);
+      return giftIdeas.length > 0 ? giftIdeas : validProducts.slice(0, 4);
+    } catch (error) {
+      console.error('Error processing products:', error);
+      return [];
+    }
+  };
 
-export default function GiftIdeas() {
-  const [cart, setCart] = useState([]);
+  const giftIdeas = getSafeProducts();
 
-  function toggleCart(id) {
-    setCart(prev => (prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]));
+  if (!giftIdeas || giftIdeas.length === 0) {
+    return null; // Don't render anything if no valid products
   }
 
   return (
-    <section className="bg-brand-bg rounded-xl p-6 md:p-8">
-      <h3 className="text-xl font-semibold mb-4 text-gray-900">Gift Ideas</h3>
-
-      <div
-        className="flex gap-4 overflow-x-auto scrollbar-x py-1"
-        role="list"
-        aria-label="Gift ideas horizontal list"
-      >
-        {sampleProducts.map(product => {
-          const inCart = cart.includes(product.id);
-          return (
-            <article
-              key={product.id}
-              role="listitem"
-              className="min-w-[220px] max-w-[220px] bg-white rounded-lg-2 shadow-sm transform transition-transform duration-200 ease-out hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg flex flex-col overflow-hidden"
-            >
-              <div className="h-36 flex items-center justify-center bg-gradient-to-br from-gray-100 to-white">
-                <div className="w-[86%] h-[86%] rounded-md border border-dashed border-gray-200 bg-gray-50 flex items-center justify-center text-gray-400">
-                  Image
+    <section className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-gray-900 mb-2">Gift Ideas</h2>
+          <p className="text-lg text-gray-600">Perfect tech gifts for every occasion</p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {giftIdeas.map((product) => {
+            const inCart = cartItems.some(item => item.id === product.id);
+            return (
+              <article key={product.id} className="group relative bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
+                <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
-              </div>
-
-              <div className="p-3 flex flex-col gap-2">
-                <div className="text-sm font-semibold text-gray-900 min-h-[2.4rem]">
-                  {product.name}
-                </div>
-
-                <div className="flex items-center justify-between mt-2">
-                  <div className="text-brand-price font-extrabold text-base">
-                    <span className="text-sm font-semibold align-baseline mr-0.5">$</span>
-                    {product.price.toFixed(2)}
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                    <Link to={`/products/${product.id}`} className="hover:text-blue-600">
+                      {product.name}
+                    </Link>
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-4 line-clamp-2">
+                    {product.description}
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-bold text-gray-900">
+                      ${product.onSale ? product.salePrice : product.price}
+                      {product.onSale && (
+                        <span className="ml-2 text-sm text-red-600 line-through">
+                          ${product.price}
+                        </span>
+                      )}
+                    </span>
+                    <button
+                      onClick={() => toggleCart(product.id)}
+                      className={`px-4 py-2 rounded-lg text-sm font-semibold transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
+                        inCart
+                          ? 'bg-transparent text-emerald-600 border-2 border-emerald-600'
+                          : 'bg-blue-600 text-white hover:bg-blue-700'
+                      }`}
+                      aria-pressed={inCart}
+                      aria-label={`${inCart ? 'Remove' : 'Add'} ${product.name} to cart`}
+                    >
+                      {inCart ? (
+                        <span className="flex items-center">
+                          <FiShoppingCart className="mr-1.5" /> Added
+                        </span>
+                      ) : (
+                        'Add to Cart'
+                      )}
+                    </button>
                   </div>
-
-                  <button
-                    onClick={() => toggleCart(product.id)}
-                    className={`px-3 py-2 rounded-lg text-sm font-semibold transition duration-150 focus:outline-none focus-outline ${
-                      inCart
-                        ? 'bg-transparent text-brand-btn border-2 border-brand-btn'
-                        : 'bg-brand-btn text-white'
-                    }`}
-                    aria-pressed={inCart}
-                    aria-label={`${inCart ? 'Remove' : 'Add'} ${product.name} to cart`}
-                  >
-                    {inCart ? 'Added' : 'Add to Cart'}
-                  </button>
                 </div>
-              </div>
-            </article>
-          );
-        })}
+                {product.onSale && (
+                  <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                    SALE
+                  </div>
+                )}
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
-}
+};
+
+GiftIdeas.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      title: PropTypes.string,
+      price: PropTypes.number,
+      salePrice: PropTypes.number,
+      onSale: PropTypes.bool,
+      bestseller: PropTypes.bool,
+      rating: PropTypes.number,
+      image: PropTypes.string,
+      description: PropTypes.string,
+      giftIdea: PropTypes.bool
+    })
+  ),
+  cartItems: PropTypes.array,
+  toggleCart: PropTypes.func
+};
+
+export default GiftIdeas;

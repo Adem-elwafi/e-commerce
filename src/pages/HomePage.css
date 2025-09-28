@@ -1,42 +1,30 @@
-.landing {
-    background-image: url('/src/assets/background.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-
-    min-height: 100vh;
-    width: 100%;
-    position: relative;
-
+/* Blur effect for modern browsers */
+.bg-blur {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-/* Add a blurred overlay for better text readability */
-.landing::before {
+/* Fallback for older browsers */
+@supports not (backdrop-filter: blur(8px)) {
+  .bg-blur::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.689);
-    backdrop-filter: blur(10px);
-    z-index: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+  }
 }
 
-/* Ensure content stays above the overlay */
-.landing > * {
-    position: relative;
-    z-index: 1;
+/* Smooth transitions for the blur effect */
+.transition-blur {
+  transition: backdrop-filter 0.3s ease, -webkit-backdrop-filter 0.3s ease;
 }
 
-/* In your CSS file */
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-custom::-webkit-scrollbar {
-    height: 8px;
-  }
-  .scrollbar-custom::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
-  }
+/* Ensure content is readable over the background */
+.relative.z-10 {
+  position: relative;
+  z-index: 10;
+}
