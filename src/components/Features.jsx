@@ -43,14 +43,18 @@ const features = [
 const Features = () => {
   return (
     <div className="w-full">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {features.map((feature, index) => (
-          <div key={index} className="flex flex-col items-center text-center p-4 rounded-xl hover:bg-gray-50 transition-colors">
-            <div className="flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 text-blue-600 mb-3">
+          <div 
+            key={index} 
+            className="group relative flex flex-col items-center text-center p-6 rounded-xl bg-[#253900]/80 hover:bg-[#1a2a00] backdrop-blur-sm border border-[#1a2a00] transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+          >
+            <div className="flex items-center justify-center h-14 w-14 rounded-xl bg-[#08CB00]/20 text-[#08CB00] mb-4 group-hover:bg-[#08CB00]/30 group-hover:text-[#08CB00] transition-colors">
               {feature.icon}
             </div>
-            <h3 className="text-base font-medium text-gray-900 mb-1">{feature.name}</h3>
-            <p className="text-sm text-gray-600">{feature.description}</p>
+            <h3 className="text-lg font-semibold text-[#EEEEEE] mb-2">{feature.name}</h3>
+            <p className="text-sm text-[#EEEEEE]/80">{feature.description}</p>
+            <div className="absolute inset-0 rounded-xl border-2 border-transparent group-hover:border-[#08CB00]/30 pointer-events-none transition-all duration-300"></div>
           </div>
         ))}
       </div>

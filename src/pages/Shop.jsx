@@ -11,7 +11,7 @@ const products = [
     price: 1999.99,
     category: 'Laptops',
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e5c09?w=500&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://macfinder.co.uk/wp-content/uploads/2022/12/img-MacBook-Pro-Retina-14-Inch-23934.jpg',
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const products = [
     price: 999.00,
     category: 'Smartphones',
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1697898706715-d54f797ee67c?w=500&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://eshop.hkcsl.com/on/demandware.static/-/Sites-master-hkt-hk/default/dwcdd8cb96/images/IP15_promaxscol/4019641_1.jpg',
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const products = [
     price: 349.99,
     category: 'Headphones',
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1658586404115-0c409fbcb80e?w=500&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://static1.pocketnowimages.com/wordpress/wp-content/uploads/styles/xxlarge/public/2022-05/LI%20WH1000%20XM5%20Colors.jpg',
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ const products = [
     price: 299.99,
     category: 'Smartwatches',
     rating: 4.5,
-    image: 'https://images.unsplash.com/photo-1633477189729-92947b59eaa5?w=500&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://360-reader.com/wp-content/uploads/2023/07/Samsung-Galaxy-Watch-Band-20mm.png',
   },
   {
     id: 5,
@@ -43,7 +43,7 @@ const products = [
     price: 1799.99,
     category: 'Laptops',
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1593642702821-8f0b072d9d7d?w=500&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://tse2.mm.bing.net/th/id/OIP.gJU7K0cumScePGJ8ynPbngHaEL?rs=1&pid=ImgDetMain&o=7&rm=3',
   },
   {
     id: 6,
@@ -51,7 +51,7 @@ const products = [
     price: 1199.99,
     category: 'Smartphones',
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1677432652651-d8ec5beb0af4?w=500&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1709103019/Croma%20Assets/Communication/Mobiles/Images/275154_10_duxhla.png',
   },
   {
     id: 7,
@@ -59,7 +59,7 @@ const products = [
     price: 329.00,
     category: 'Headphones',
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://th.bing.com/th/id/R.90918a5a2c22d2a2dd562f30f78fb921?rik=%2bVmMjigkHej3Jg&pid=ImgRaw&r=0',
   },
   {
     id: 8,
@@ -75,7 +75,7 @@ const products = [
     price: 1299.99,
     category: 'Laptops',
     rating: 4.6,
-    image: 'https://images.unsplash.com/photo-1638624466632-2c2670edb1b4?w=500&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://clarkdeals.com/wp-content/uploads/2022/09/microsoft-surface-laptop-935x604.png',
   },
   {
     id: 10,
@@ -83,7 +83,7 @@ const products = [
     price: 899.00,
     category: 'Smartphones',
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1697898706715-d54f797ee67c?w=500&auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    image: 'https://m.media-amazon.com/images/I/713eEl39eLL.jpg',
   }
 
 ];
@@ -164,24 +164,19 @@ export default function Shop() {
           key={product.id}
           className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col group"
         >
-          <div className="relative overflow-hidden h-60 bg-gray-100">
+          <div className="relative h-60">
             <img
               src={product.image}
               alt={product.name}
               loading="lazy"
               className="w-full h-full object-contain p-4 hover:scale-105 transition-transform duration-300"
-              style={{
-                backgroundColor: '#f5f5f7',
-                backgroundImage: 'linear-gradient(45deg, #f0f0f0 25%, #ffffff 25%, #ffffff 50%, #f0f0f0 50%, #f0f0f0 75%, #ffffff 75%, #ffffff 100%)',
-                backgroundSize: '20px 20px'
-              }}
               onError={(e) => {
                 e.target.onerror = null;
                 e.target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNTAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI2Y1ZjVmNyIvPjx0ZXh0IHg9IjI1MCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNjY2MiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk5vIGltYWdlIGF2YWlsYWJsZTwvdGV4dD48L3N2Zz4=';
               }}
             />
             <button className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity hover:bg-gray-100">
-              <FiHeart className="text-gray-600" />
+              <FiHeart className="w-5 h-5 text-gray-600" />
             </button>
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 pt-8">
               <span className="text-xs text-white bg-[#08CB00] px-2 py-1 rounded-full">

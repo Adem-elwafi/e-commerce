@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiShoppingCart, FiHeart, FiEye, FiStar } from 'react-icons/fi';
 
-const GiftIdeas = ({ products = [], cartItems = [], toggleCart = () => {} }) => {
+const GiftIdeas = ({ products = [], cartItems = [], toggleCart = () => {}, toggleWishlist = () => {} }) => {
   // Safely get gift ideas or first 4 products
   const getSafeProducts = () => {
     try {
@@ -29,79 +29,133 @@ const GiftIdeas = ({ products = [], cartItems = [], toggleCart = () => {} }) => 
   const giftIdeas = getSafeProducts();
 
   if (!giftIdeas || giftIdeas.length === 0) {
-    return null; // Don't render anything if no valid products
+    return (
+      <div className="text-center py-12">
+        <p className="text-gray-500">No gift ideas available at the moment. Check back soon!</p>
+      </div>
+    );
   }
 
+  // Sample rating function (replace with actual rating logic if available)
+  const getRandomRating = () => (Math.random() * 2 + 3).toFixed(1);
+  const getRandomReviewCount = () => Math.floor(Math.random() * 100) + 1;
+
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Gift Ideas</h2>
-          <p className="text-lg text-gray-600">Perfect tech gifts for every occasion</p>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {giftIdeas.map((product) => {
-            const inCart = cartItems.some(item => item.id === product.id);
-            return (
-              <article key={product.id} className="group relative bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden">
-                <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    loading="lazy"
-                  />
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        {giftIdeas.map((product) => {
+          const inCart = cartItems.some(item => item.id === product.id);
+          const rating = getRandomRating();
+          const reviewCount = getRandomReviewCount();
+          const isNew = Math.random() > 0.5;
+          
+          return (
+            <div key={product.id} className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100">
+              {/* Product Image */}
+              <div className="relative overflow-hidden bg-gray-100 aspect-square">
+                <img
+                  src={product.image || 'https://via.placeholder.com/300x300?text=Product+Image'}
+                  alt={product.name || 'Product'}
+                  className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                
+                {/* Quick Actions */}
+                <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20">
+                  <button 
+                    className="p-2 bg-white rounded-full text-gray-800 hover:bg-blue-600 hover:text-white transition-colors"
+                    aria-label="Quick view"
+                  >
+                    <FiEye className="w-5 h-5" />
+                  </button>
+                  <button 
+                    className="p-2 bg-white rounded-full text-gray-800 hover:bg-red-500 hover:text-white transition-colors"
+                    onClick={() => toggleWishlist(product.id)}
+                    aria-label="Add to wishlist"
+                  >
+                    <FiHeart className="w-5 h-5" />
+                  </button>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                    <Link to={`/products/${product.id}`} className="hover:text-blue-600">
-                      {product.name}
-                    </Link>
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-4 line-clamp-2">
-                    {product.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-gray-900">
-                      ${product.onSale ? product.salePrice : product.price}
-                      {product.onSale && (
-                        <span className="ml-2 text-sm text-red-600 line-through">
-                          ${product.price}
-                        </span>
-                      )}
+                
+                {/* Badges */}
+                <div className="absolute top-3 left-3 flex flex-col gap-2">
+                  {product.onSale && (
+                    <span className="bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                      {Math.round((1 - product.salePrice / product.price) * 100)}% OFF
                     </span>
-                    <button
-                      onClick={() => toggleCart(product.id)}
-                      className={`px-4 py-2 rounded-lg text-sm font-semibold transition duration-150 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 ${
-                        inCart
-                          ? 'bg-transparent text-emerald-600 border-2 border-emerald-600'
-                          : 'bg-blue-600 text-white hover:bg-blue-700'
-                      }`}
-                      aria-pressed={inCart}
-                      aria-label={`${inCart ? 'Remove' : 'Add'} ${product.name} to cart`}
-                    >
-                      {inCart ? (
-                        <span className="flex items-center">
-                          <FiShoppingCart className="mr-1.5" /> Added
-                        </span>
-                      ) : (
-                        'Add to Cart'
-                      )}
-                    </button>
-                  </div>
+                  )}
+                  {isNew && (
+                    <span className="bg-blue-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                      NEW
+                    </span>
+                  )}
                 </div>
-                {product.onSale && (
-                  <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-2.5 py-1 rounded-full">
-                    SALE
+              </div>
+              
+              {/* Product Info */}
+              <div className="p-5">
+                <div className="flex items-center gap-1 mb-1">
+                  {[...Array(5)].map((_, i) => (
+                    <FiStar 
+                      key={i} 
+                      className={`w-4 h-4 ${
+                        i < Math.floor(rating) 
+                          ? 'text-yellow-400 fill-current' 
+                          : 'text-gray-300'
+                      }`} 
+                    />
+                  ))}
+                  <span className="text-xs text-gray-500 ml-1">({reviewCount})</span>
+                </div>
+                
+                <h3 className="font-semibold text-gray-900 mb-1 line-clamp-1">
+                  <Link to={`/products/${product.id}`} className="hover:text-blue-600 transition-colors">
+                    {product.name || 'Product Name'}
+                  </Link>
+                </h3>
+                
+                <p className="text-sm text-gray-600 mb-3 line-clamp-2 h-10">
+                  {product.description || 'Product description goes here'}
+                </p>
+                
+                <div className="flex items-center justify-between">
+                  <div>
+                    <span className="text-lg font-bold text-gray-900">
+                      ${product.onSale ? product.salePrice : (product.price || '0.00')}
+                    </span>
+                    {product.onSale && (
+                      <span className="ml-2 text-sm text-gray-500 line-through">
+                        ${product.price}
+                      </span>
+                    )}
                   </div>
-                )}
-              </article>
-            );
-          })}
-        </div>
+                  
+                  <button
+                    onClick={() => toggleCart(product.id)}
+                    className={`p-2 rounded-full transition-colors ${
+                      inCart
+                        ? 'bg-green-100 text-green-600 hover:bg-green-200'
+                        : 'bg-blue-600 text-white hover:bg-blue-700'
+                    }`}
+                    aria-pressed={inCart}
+                    aria-label={`${inCart ? 'Remove from' : 'Add to'} cart`}
+                  >
+                    {inCart ? (
+                      <FiCheck className="w-5 h-5" />
+                    ) : (
+                      <FiShoppingCart className="w-5 h-5" />
+                    )}
+                  </button>
+                </div>
+              </div>
+              
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+            </div>
+          );
+        })}
       </div>
-    </section>
+    </div>
   );
 };
 

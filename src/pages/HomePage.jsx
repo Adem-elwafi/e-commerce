@@ -99,24 +99,30 @@ const HomePage = () => {
             <Categories />
           </section>
           
-          <section aria-labelledby="bestsellers-heading" className="mt-16">
+          <section id="bestsellers" aria-labelledby="bestsellers-heading" className="pt-16 -mt-12">
             <h2 id="bestsellers-heading" className="text-3xl font-bold text-center mb-8">Best Sellers</h2>
             <Bestsellers />
           </section>
           
-          <section aria-labelledby="features-heading" className="mt-16 bg-gray-50 rounded-2xl p-8">
-            <h2 id="features-heading" className="text-3xl font-bold text-center mb-8">Why Choose Us</h2>
+          <section id="features" aria-labelledby="features-heading" className="mt-16 bg-[#253900] rounded-2xl p-8 shadow-xl">
+            <h2 id="features-heading" className="text-3xl font-bold text-center mb-8 text-[#EEEEEE]">Why Choose Us</h2>
             <Features />
           </section>
           
-          <section aria-labelledby="gift-ideas-heading" className="mt-16">
-            <h2 id="gift-ideas-heading" className="text-3xl font-bold text-center mb-8">Gift Ideas</h2>
+          <section id="gift-ideas" aria-labelledby="gift-ideas-heading" className="pt-16 -mt-12">
+            <div className="text-center mb-12">
+              <h2 id="gift-ideas-heading" className="text-3xl font-bold text-[#000000] mb-3">Perfect Tech Gifts</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">Thoughtful tech gifts for every occasion and budget</p>
+            </div>
             <GiftIdeas />
           </section>
           
-          <section aria-labelledby="newsletter-heading" className="mt-16 bg-gray-50 rounded-2xl p-8">
-            <h2 id="newsletter-heading" className="text-3xl font-bold text-center mb-8">Stay Updated</h2>
-            <Newsletter />
+          <section aria-labelledby="newsletter-heading" className="mt-16 bg-[#08CB00] rounded-2xl p-8 shadow-xl overflow-hidden relative">
+            <div className="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#06b100] to-transparent -mr-8 -rotate-12 transform origin-left"></div>
+            <div className="relative z-10">
+              <h2 id="newsletter-heading" className="text-3xl font-bold text-center mb-8 text-[#000000]">Stay Updated</h2>
+              <Newsletter />
+            </div>
           </section>
         </div>
       </main>
