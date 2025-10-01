@@ -7,7 +7,7 @@ const products = [
     onSale: true,
     bestseller: true,
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?w=500&auto=format&fit=crop&q=60',
+    image: 'https://macfinder.co.uk/wp-content/uploads/2022/12/img-MacBook-Pro-Retina-14-Inch-23934.jpg',
     description: 'High-performance gaming laptop with RTX 4070, 32GB RAM, and 1TB NVMe SSD.'
   },
   {
@@ -17,7 +17,7 @@ const products = [
     onSale: false,
     bestseller: true,
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1546538915-a9e2c8d1a40b?w=500&auto=format&fit=crop&q=60',
+    image: 'https://eshop.hkcsl.com/on/demandware.static/-/Sites-master-hkt-hk/default/dwcdd8cb96/images/IP15_promaxscol/4019641_1.jpg',
     description: '32-inch 4K UHD monitor with HDR and 144Hz refresh rate.'
   },
   {
@@ -27,7 +27,7 @@ const products = [
     onSale: true,
     bestseller: true,
     rating: 4,
-    image: 'https://images.unsplash.com/photo-1601445638532-3c6f6c3aa1d6?w=500&auto=format&fit=crop&q=60',
+    image: 'https://static1.pocketnowimages.com/wordpress/wp-content/uploads/styles/xxlarge/public/2022-05/LI%20WH1000%20XM5%20Colors.jpg',
     description: 'RGB mechanical keyboard with Cherry MX switches and aluminum frame.'
   },
   {
@@ -37,7 +37,7 @@ const products = [
     onSale: false,
     bestseller: true,
     rating: 5,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&auto=format&fit=crop&q=60',
+    image: 'https://360-reader.com/wp-content/uploads/2023/07/Samsung-Galaxy-Watch-Band-20mm.png',
     description: 'Premium wireless headphones with industry-leading noise cancellation.'
   },
   {
@@ -47,7 +47,7 @@ const products = [
     onSale: true,
     bestseller: false,
     rating: 4,
-    image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=500&auto=format&fit=crop&q=60',
+    image: 'https://tse2.mm.bing.net/th/id/OIP.gJU7K0cumScePGJ8ynPbngHaEL?rs=1&pid=ImgDetMain&o=7&rm=3',
     description: 'High-precision gaming mouse with 16,000 DPI and customizable buttons.'
   },
   {

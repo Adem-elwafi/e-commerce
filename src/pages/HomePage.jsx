@@ -36,7 +36,7 @@ const HomePage = () => {
             <div className="hidden sm:mb-8 sm:flex sm:justify-center">
               <div className="relative rounded-full px-4 py-1 text-sm leading-6 text-white ring-1 ring-white/20 hover:ring-white/50 transition-all duration-300">
                 Introducing our latest tech collection.{' '}
-                <Link to="/new-arrivals" className="font-semibold text-white">
+                <Link to="/shop?filter=new-arrivals" className="font-semibold text-white hover:text-gray-200 transition-colors">
                   <span className="absolute inset-0" aria-hidden="true"></span>Explore now <span aria-hidden="true">→</span>
                 </Link>
               </div>
